@@ -1,8 +1,6 @@
 package com.scaler.myproject;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/sample")
@@ -107,6 +105,12 @@ public class SampleController {
     @RequestMapping("/sleepwell")
     public String sleepwell() {
         return "Sleep well from Spring Boot!";
+    }
+
+    @PostMapping("/post")
+    public String postMethod(@RequestBody String body){
+        return "Post method called with body: " + body;
+
     }
 
 }
