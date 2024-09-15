@@ -1,15 +1,16 @@
-package com.scaler.myproject.models;
+package com.scaler.myproject.dtos;
 
+import com.scaler.myproject.models.Category;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Product {
+public class FakeStoreProductDto {
     private long id;
     private String title;
     private String description;
     private double price;
     private String image;
-    private Category category;
+    private String category;
 }
