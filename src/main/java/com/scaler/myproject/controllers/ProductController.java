@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 @RestController
@@ -40,6 +41,11 @@ public class ProductController {
     @PutMapping("/{id}")
     public Product replaceProduct(@PathVariable Long id, @RequestBody Product product) {
         return productService.replaceProduct(id, product);
+    }
+
+    @ExceptionHandler(FileNotFoundException.class)
+    public ResponseEntity<Void> handleSomeException() {
+        return null;
     }
 
 }
