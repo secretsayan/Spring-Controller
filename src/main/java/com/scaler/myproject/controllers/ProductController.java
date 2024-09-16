@@ -2,10 +2,9 @@ package com.scaler.myproject.controllers;
 
 import com.scaler.myproject.models.Product;
 import com.scaler.myproject.services.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,13 +19,26 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable long id) {
-        return productService.getProductByID(id);
+    public ResponseEntity<Product> getProductById(@PathVariable long id) {
+        Product product = productService.getProductByID(id);
+        ResponseEntity<Product> responseEntity;
+        if(product == null){
+            responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            responseEntity = new ResponseEntity<>(product, HttpStatus.OK);
+        }
+
+        return  responseEntity;
     }
 
-    @GetMapping()
+    @GetMapping("/all")
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
+    }
+
+    @PutMapping("/{id}")
+    public Product replaceProduct(@PathVariable Long id, @RequestBody Product product) {
+        return productService.replaceProduct(id, product);
     }
 
 }
