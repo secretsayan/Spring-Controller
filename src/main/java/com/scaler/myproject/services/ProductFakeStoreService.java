@@ -32,7 +32,7 @@ public class ProductFakeStoreService implements ProductService{
         product.setDescription(fakeStoreProductDto.getDescription());
 
         Category category = new Category();
-        category.setDesc(fakeStoreProductDto.getCategory());
+        category.setTitle(fakeStoreProductDto.getCategory());
         product.setCategory(category);
 
 

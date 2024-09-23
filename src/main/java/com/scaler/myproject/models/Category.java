@@ -1,10 +1,13 @@
 package com.scaler.myproject.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Category {
-    private String desc;
+@Entity
+public class Category extends BaseModel {
+    private String title;
 }
