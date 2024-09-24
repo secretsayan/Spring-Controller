@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Service
+@Service("productFakeStoreService")
 public class ProductFakeStoreService implements ProductService{
 
     private RestTemplate restTemplate;
@@ -78,6 +78,20 @@ public class ProductFakeStoreService implements ProductService{
         return convertFakeStoreDtoToProduct(response);
     }
 
+    @Override
+    public Product updateProduct(Long id, Product product) {
+        return null;
+    }
+
+    @Override
+    public Product createProduct(Product product) {
+        return null;
+    }
+
+    @Override
+    public void deleteProduct() {
+
+    }
 
 
 }
