@@ -49,4 +49,9 @@ public class ProductController {
         return null;
     }
 
+    @PostMapping
+    public Product createProduct(@RequestBody Product product) { // can use DTO as well.
+        return productService.createProduct(product);
+    }
+
 }
