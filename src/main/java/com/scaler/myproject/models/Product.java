@@ -1,5 +1,6 @@
 package com.scaler.myproject.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -16,4 +17,5 @@ public class Product extends BaseModel {
     private String image;
     @ManyToOne
     private Category category;
+    private int qty;
 }
