@@ -1,0 +1,15 @@
+package com.scaler.myproject.repositories;
+
+import com.scaler.myproject.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<com.scaler.myproject.models.User, Long> {
+    @Override
+    User save(User user); // upsert
+
+    Optional<User> findByEmail(String email);
+}
