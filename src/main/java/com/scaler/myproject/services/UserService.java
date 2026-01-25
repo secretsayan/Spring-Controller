@@ -1,11 +1,10 @@
 package com.scaler.myproject.services;
 
-
 import com.scaler.myproject.exceptions.UserNotFoundException;
 import com.scaler.myproject.models.Token;
-import com.myproject.userserviceevebatch.models.User;
-import com.myproject.userserviceevebatch.repositories.UserRepository;
-import com.myproject.userserviceevebatch.repositories.TokenRepository;
+import com.scaler.myproject.models.User;
+import com.scaler.myproject.repositories.TokenRepository;
+import com.scaler.myproject.repositories.UserRepository;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,13 +16,13 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-    private UserRepository userRepository;
-    private TokenRepository tokenRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserRepository userRepository;
+    private final TokenRepository tokenRepository;
 
-    UserService(BCryptPasswordEncoder bCryptPasswordEncoder,
-                UserRepository userRepository,
-                TokenRepository tokenRepository) {
+    public UserService(BCryptPasswordEncoder bCryptPasswordEncoder,
+                       UserRepository userRepository,
+                       TokenRepository tokenRepository) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.userRepository = userRepository;
         this.tokenRepository = tokenRepository;
@@ -39,7 +38,6 @@ public class UserService {
         user.setHashedPassword(bCryptPasswordEncoder.encode(password));
         user.setEmailVerified(true);
 
-        //save the user object to the DB.
         return userRepository.save(user);
     }
 
@@ -53,15 +51,11 @@ public class UserService {
         User user = optionalUser.get();
 
         if (!bCryptPasswordEncoder.matches(password, user.getHashedPassword())) {
-            //Throw some exception.
             return null;
         }
 
-        //Login successful, generate a Token.
         Token token = generateToken(user);
-        Token savedToken = tokenRepository.save(token);
-
-        return savedToken;
+        return tokenRepository.save(token);
     }
 
     private Token generateToken(User user) {
@@ -72,7 +66,6 @@ public class UserService {
 
         Token token = new Token();
         token.setExpiryAt(expiryDate);
-        //128 character alphanumeric string.
         token.setValue(RandomStringUtils.randomAlphanumeric(128));
         token.setUser(user);
         return token;
@@ -82,20 +75,17 @@ public class UserService {
         Optional<Token> optionalToken = tokenRepository.findByValueAndDeleted(tokenValue, false);
 
         if (optionalToken.isEmpty()) {
-            //Throw new Exception
             return;
         }
 
         Token token = optionalToken.get();
-        token.setDeleted(true);
-        tokenRepository.save(token);
+        tokenRepository.delete(token);
     }
 
     public User validateToken(String token) {
         Optional<Token> optionalToken = tokenRepository.findByValueAndDeletedAndExpiryAtGreaterThan(token, false, new Date());
 
         if (optionalToken.isEmpty()) {
-            //Throw new Exception
             return null;
         }
 

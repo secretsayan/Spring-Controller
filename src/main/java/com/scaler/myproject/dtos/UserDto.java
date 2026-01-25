@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import java.util.List;
 
+import com.scaler.myproject.models.Role;
 import com.scaler.myproject.models.User;
 
 @Getter
@@ -14,7 +15,7 @@ public class UserDto {
     private String email;
     private List<Role> roles;
 
-        public static UserDto from(User user) {
+    public static UserDto from(User user) {
         if (user == null) {
             return null;
         }

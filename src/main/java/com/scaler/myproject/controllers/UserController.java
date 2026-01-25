@@ -7,15 +7,14 @@ import com.scaler.myproject.dtos.UserDto;
 import com.scaler.myproject.models.Token;
 import com.scaler.myproject.models.User;
 import com.scaler.myproject.services.UserService;
-import org.scaler.myproject.http.HttpStatus;
-import org.scaler.myproject.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.sscaler.myproject.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")

@@ -1,4 +1,4 @@
-package com.myproject.userserviceevebatch.security.models;
+package com.scaler.myproject.security.models;
 
 import java.time.Instant;
 

@@ -1,4 +1,4 @@
-package com.myproject.userserviceevebatch.exceptions;
+package com.scaler.myproject.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message) {

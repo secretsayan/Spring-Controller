@@ -1,8 +1,8 @@
-package com.myproject.userserviceevebatch.security.services;
+package com.scaler.myproject.security.services;
 
-import com.myproject.userserviceevebatch.models.User;
-import com.myproject.userserviceevebatch.repositories.UserRepository;
-import com.myproject.userserviceevebatch.security.models.CustomUserDetails;
+import com.scaler.myproject.models.User;
+import com.scaler.myproject.repositories.UserRepository;
+import com.scaler.myproject.security.models.CustomUserDetails;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

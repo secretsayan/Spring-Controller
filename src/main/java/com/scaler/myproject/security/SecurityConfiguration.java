@@ -1,4 +1,4 @@
-package com.myproject.userserviceevebatch.security;
+package com.scaler.myproject.security;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;

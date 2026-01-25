@@ -1,8 +1,8 @@
-package com.myproject.userserviceevebatch.security.repositories;
+package com.scaler.myproject.security.repositories;
 
 import java.util.Optional;
 
-import com.myproject.userserviceevebatch.security.models.Client;
+import com.scaler.myproject.security.models.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

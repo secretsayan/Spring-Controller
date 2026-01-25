@@ -1,9 +1,9 @@
-package com.myproject.userserviceevebatch.security.services;
+package com.scaler.myproject.security.services;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.myproject.userserviceevebatch.security.models.AuthorizationConsent;
+import com.scaler.myproject.security.models.AuthorizationConsent;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

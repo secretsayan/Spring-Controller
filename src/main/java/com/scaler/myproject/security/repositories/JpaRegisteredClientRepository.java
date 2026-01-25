@@ -1,11 +1,11 @@
-package com.myproject.userserviceevebatch.security.repositories;
+package com.scaler.myproject.security.repositories;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.myproject.userserviceevebatch.security.models.Client;
+import com.scaler.myproject.security.models.Client;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;

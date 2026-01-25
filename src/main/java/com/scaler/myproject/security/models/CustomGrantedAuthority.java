@@ -1,6 +1,6 @@
-package com.myproject.userserviceevebatch.security.models;
+package com.scaler.myproject.security.models;
 
-import com.myproject.userserviceevebatch.models.Role;
+import com.scaler.myproject.models.Role;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.security.core.GrantedAuthority;
 

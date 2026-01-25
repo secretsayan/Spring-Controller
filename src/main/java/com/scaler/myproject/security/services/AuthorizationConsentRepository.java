@@ -1,6 +1,6 @@
-package com.myproject.userserviceevebatch.security.services;
+package com.scaler.myproject.security.services;
 
-import com.myproject.userserviceevebatch.security.models.AuthorizationConsent;
+import com.scaler.myproject.security.models.AuthorizationConsent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

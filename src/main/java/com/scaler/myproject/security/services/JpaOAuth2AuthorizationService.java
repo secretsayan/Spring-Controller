@@ -1,4 +1,4 @@
-package com.myproject.userserviceevebatch.security.services;
+package com.scaler.myproject.security.services;
 
 import java.time.Instant;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-import com.myproject.userserviceevebatch.security.repositories.AuthorizationRepository;
-import com.myproject.userserviceevebatch.security.models.Authorization;
+import com.scaler.myproject.security.repositories.AuthorizationRepository;
+import com.scaler.myproject.security.models.Authorization;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;

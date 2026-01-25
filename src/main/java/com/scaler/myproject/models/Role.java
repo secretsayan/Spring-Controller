@@ -1,4 +1,4 @@
-package com.myproject.userserviceevebatch.models;
+package com.scaler.myproject.models;
 
 import jakarta.persistence.Entity;
 import lombok.Getter;
