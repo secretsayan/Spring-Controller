@@ -28,7 +28,7 @@ public class SelfProductService implements ProductService {
     }
 
     @Override
-    public Product getProductById(Long productId) throws ProductNotFoundException {
+    public Product getProductByID(Long productId) throws ProductNotFoundException {
         //make a DB call to get the product with given Id.
         //select * from products where id = ?
         Optional<Product> optionalProduct = productRepository.findById(productId);

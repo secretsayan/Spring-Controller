@@ -9,8 +9,6 @@ public interface ProductService {
 
     Product getProductByID(Long id) throws ProductNotFoundException;
 
-    Product updateProduct(Long id, Product product);
-
     Product createProduct(Product product);
 
 

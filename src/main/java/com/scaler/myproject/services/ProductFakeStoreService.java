@@ -4,6 +4,8 @@ import com.scaler.myproject.dtos.FakeStoreProductDto;
 import com.scaler.myproject.exceptions.ProductNotFoundException;
 import com.scaler.myproject.models.Category;
 import com.scaler.myproject.models.Product;
+
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpMessageConverterExtractor;
@@ -49,8 +51,9 @@ public class ProductFakeStoreService implements ProductService{
         return convertFakeStoreDtoToProduct(fakeStoreProductDto);
     }
 
-    @Override
-    public List<Product> getAllProducts() throws ProductNotFoundException {
+
+   @Override
+    public Page<Product> getAllProducts(int pageNumber, int pageSize) {
         FakeStoreProductDto[] fakeStoreProductDtos = restTemplate.getForObject("https://fakestoreapi.com/products", FakeStoreProductDto[].class);
 
 
@@ -79,18 +82,14 @@ public class ProductFakeStoreService implements ProductService{
     }
 
     @Override
-    public Product updateProduct(Long id, Product product) {
-        return null;
-    }
-
-    @Override
     public Product createProduct(Product product) {
         return null;
     }
 
     @Override
-    public void deleteProduct() {
-
+    public void deleteProduct(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteProduct'");
     }
 
 
