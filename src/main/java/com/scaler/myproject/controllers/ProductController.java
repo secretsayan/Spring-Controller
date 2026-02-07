@@ -72,26 +72,14 @@ public class ProductController {
 
 
 
-
-
     @GetMapping("/all")
     public List<Product> getAllProducts() throws ProductNotFoundException {
         return productService.getAllProducts();
     }
 
-    // @PutMapping("/{id}")
-    // public Product replaceProduct(@PathVariable Long id, @RequestBody Product product) {
-    //     return productService.replaceProduct(id, product);
-    // }
 
     @ExceptionHandler(FileNotFoundException.class)
     public ResponseEntity<Void> handleSomeException() {
         return null;
     }
-
-    // @PostMapping
-    // public Product createProduct(@RequestBody Product product) { // can use DTO as well.
-    //     return productService.createProduct(product);
-    // }
-
 }
