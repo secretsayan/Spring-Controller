@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -34,24 +35,63 @@ public class ProductController {
         return  responseEntity;
     }
 
+    @GetMapping()
+    public Page<Product> getAllProducts(@RequestParam("pageNumber") int pageNumber, @RequestParam("pageSize") int pageSize) {
+        return productService.getAllProducts(pageNumber, pageSize);
+    }
+
+    @PostMapping()
+    public Product createProduct(@RequestBody Product product) {
+        return productService.createProduct(product);
+    }
+
+    @PatchMapping("/{id}")
+    public Product updateProduct(@PathVariable("id") Long productId,
+                                 @RequestBody Product product) {
+        return null;
+    }
+
+    @PutMapping("/{id}")
+    public Product replaceProduct(@PathVariable("id") Long productId,
+                                  @RequestBody Product product) throws ProductNotFoundException {
+        return productService.replaceProduct(productId, product);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable("id") Long id) {
+        productService.deleteProduct(id);
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<String> handleProductNotFoundException(ProductNotFoundException e) {
+        return new ResponseEntity<>(
+                e.getMessage(),
+                HttpStatus.SERVICE_UNAVAILABLE
+        );
+    }
+
+
+
+
+
     @GetMapping("/all")
     public List<Product> getAllProducts() throws ProductNotFoundException {
         return productService.getAllProducts();
     }
 
-    @PutMapping("/{id}")
-    public Product replaceProduct(@PathVariable Long id, @RequestBody Product product) {
-        return productService.replaceProduct(id, product);
-    }
+    // @PutMapping("/{id}")
+    // public Product replaceProduct(@PathVariable Long id, @RequestBody Product product) {
+    //     return productService.replaceProduct(id, product);
+    // }
 
     @ExceptionHandler(FileNotFoundException.class)
     public ResponseEntity<Void> handleSomeException() {
         return null;
     }
 
-    @PostMapping
-    public Product createProduct(@RequestBody Product product) { // can use DTO as well.
-        return productService.createProduct(product);
-    }
+    // @PostMapping
+    // public Product createProduct(@RequestBody Product product) { // can use DTO as well.
+    //     return productService.createProduct(product);
+    // }
 
 }
